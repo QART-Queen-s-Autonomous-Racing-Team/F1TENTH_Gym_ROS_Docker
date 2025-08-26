@@ -10,12 +10,13 @@ services:
         USER_GID: 1000
     container_name: ros2-cont-foxy
     volumes:
-      - ../src:/home/${USERNAME}/ros2_ws/src:rw
-      - ../../shared:/home/${USERNAME}/shared:rw
+      - ../src:/home/user1000/ros2_ws/src:rw
+      - ../../shared:/home/user1000/shared:rw
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     environment:
       - DISPLAY=${DISPLAY}
       - ROS_DISTRO=foxy
+      - USERNAME=user1000
     network_mode: host
     stdin_open: true
     tty: true

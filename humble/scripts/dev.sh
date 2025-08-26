@@ -46,6 +46,12 @@ status() {
     docker compose ps
 }
 
+# Function to open an additional shell
+new_shell() {
+    echo "Opening new shell in the $ROS_DISTRO container..."
+    docker exec -it ros2-cont-foxy /bin/bash
+}
+
 case "$1" in
     start|"")
         start_dev
@@ -55,6 +61,9 @@ case "$1" in
         ;;
     rebuild)
         rebuild
+        ;;
+    new)
+        new_shell
         ;;
     status)
         status
