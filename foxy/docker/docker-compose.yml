@@ -1,0 +1,24 @@
+services:
+  ros2-srv-foxy:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ROS_DISTRO: foxy
+        USERNAME: user1000
+        USER_UID: 1000
+        USER_GID: 1000
+    container_name: ros2-cont-foxy
+    volumes:
+      - ../src:/home/${USERNAME}/ros2_ws/src:rw
+      - ../../shared:/home/${USERNAME}/shared:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ROS_DISTRO=foxy
+    network_mode: host
+    stdin_open: true
+    tty: true
+    privileged: true
+    devices:
+      - /dev/dri:/dev/dri

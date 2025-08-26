@@ -1,0 +1,42 @@
+FROM osrf/ros:foxy-desktop
+
+# Install additional tools as `root` user here
+RUN apt update && apt install -y \
+    python3-colcon-common-extensions \
+    python3-rosdep \
+    nano \
+    git \
+    curl \
+    build-essential \
+    sudo \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create a non-root user called `user1000` with UID, GID set to 1000
+ARG USERNAME=user1000
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+
+# Set up workspace
+RUN mkdir -p /home/$USERNAME/ros2_ws/src && \
+    chown -R $USERNAME:$USERNAME /home/$USERNAME/
+
+# Set the default user to non-root for working with ROS
+USER $USERNAME
+
+# Set the default working directory
+WORKDIR /home/$USERNAME/ros2_ws
+
+# Build the code - source ROS, install dependencies, build with colcon
+RUN . /opt/ros/foxy/setup.sh && \
+    rosdep update && rosdep install --from-paths src --ignore-src -r -y && \
+    colcon build --symlink-install
+
+# Add ROS and workscape sourcing in bashrc
+RUN echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc && \
+    echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
+
+# CMD allows overriding commands, unlike ENTRYPOINT 
+CMD ["/bin/bash"]

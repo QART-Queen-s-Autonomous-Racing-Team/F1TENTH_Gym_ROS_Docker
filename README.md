@@ -10,7 +10,8 @@
 
 ## Daily commands
 1. `cd` to the project in `ros2_workspace`
-2. [`dev.sh`](http://dev.sh) shortcuts (replace `humble` with `jazzy` as needed)
+2. Copy your `src` directory for ROS2 workspace into the `[ROS_DISTRO]/src` folder - it is linked with Docker volumes to `src` inside the container
+3. [`dev.sh`](http://dev.sh) shortcuts (replace `humble` with `jazzy` as needed)
     1. start a container and enter it
         
         ```bash
