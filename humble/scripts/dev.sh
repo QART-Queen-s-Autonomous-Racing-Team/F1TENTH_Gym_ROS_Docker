@@ -52,6 +52,12 @@ new_shell() {
     docker exec -it ros2-cont-foxy /bin/bash
 }
 
+# Function to open an additional shell
+root_shell() {
+    echo "Opening new ROOT shell in the $ROS_DISTRO container..."
+    docker exec -it --user root ros2-cont-foxy bash
+}
+
 case "$1" in
     start|"")
         start_dev
@@ -64,6 +70,9 @@ case "$1" in
         ;;
     new)
         new_shell
+        ;;
+    root)
+        root_shell
         ;;
     status)
         status

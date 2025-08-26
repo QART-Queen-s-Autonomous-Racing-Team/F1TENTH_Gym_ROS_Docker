@@ -54,3 +54,6 @@
 1. Create a copy of an existing container folder, such as `~/ros2_workspaces/humble` and copy it with a new name, for ex for foxy it would be `~/ros2_workspaces/foxy`
 2. In the Dockerfile, replace the image with the correct `osrf/ros` found at https://hub.docker.com/r/osrf/ros/tags, using the same format of `osrf/ros:[ROS_DISTRO]-desktop-full`
 3. Replace all instances of `humble` with the new distribution, such as `foxy` across all 3 files (`Dockerfile, docker-compose.yml, dev.sh`)
+
+## Installing dependencies 
+- Because of the `rm -rf /var/lib/apt/lists/*` command, `sudo apt install` won't work by default for installing packages - first run `sudo apt update` and `sudo apt upgrade` and then it will work 

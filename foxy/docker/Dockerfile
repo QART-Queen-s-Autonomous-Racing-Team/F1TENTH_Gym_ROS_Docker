@@ -2,6 +2,10 @@ FROM osrf/ros:foxy-desktop
 
 # Install additional tools as `root` user here
 RUN apt update && apt install -y \
+    # Install ROS packages here
+    ros-foxy-xacro \
+    ros-foxy-joint-state-publisher-gui \
+    # Install other dependencies as well
     python3-colcon-common-extensions \
     python3-rosdep \
     nano \
