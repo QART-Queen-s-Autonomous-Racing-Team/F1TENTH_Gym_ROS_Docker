@@ -43,8 +43,8 @@ rebuild() {
 # Function to show container status
 status() {
     echo "ROS2 $ROS_DISTRO container status:"
-    docker ps --format '{{.Names}}'
-    # Customize this as desired with '{{.ID}}', '{{.Image}}', etc
+    docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+    # Customize this as desired with '{{.ID}}', '{{.Command}}', etc
     # More details here: https://docs.docker.com/reference/cli/docker/container/ls/#formatting
 }
 
