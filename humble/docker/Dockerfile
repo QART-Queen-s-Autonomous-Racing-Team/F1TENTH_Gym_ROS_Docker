@@ -9,7 +9,11 @@ RUN apt update && apt install -y \
     curl \
     build-essential \
     sudo \
+    bash-completion \
     && rm -rf /var/lib/apt/lists/*
+
+# Install Starship for prettiness
+RUN curl -fsSL https://starship.rs/install.sh | sh -s -- -y
 
 # Create a non-root user called `user1000` with UID, GID set to 1000
 ARG USERNAME=user1000
@@ -36,7 +40,8 @@ RUN . /opt/ros/humble/setup.sh && \
 
 # Add ROS and workscape sourcing in bashrc
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && \
-    echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
+    echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc && \
+    echo 'eval "$(starship init bash)"' >> ~/.bashrc
 
 # CMD allows overriding commands, unlike ENTRYPOINT 
 CMD ["/bin/bash"]
