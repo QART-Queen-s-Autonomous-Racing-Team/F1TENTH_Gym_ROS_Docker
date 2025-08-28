@@ -7,6 +7,12 @@ RUN apt update && apt install -y \
     # Install ROS packages here
     ros-foxy-xacro \
     ros-foxy-joint-state-publisher-gui \
+    ros-foxy-twist-mux \
+    ros-foxy-ros2-control \
+    ros-foxy-ros2-controllers \
+    ros-foxy-controller-manager \
+    ros-foxy-controller-manager-msgs \
+    ros-foxy-tf2-tools \
     # Gazebo
     ros-foxy-gazebo-ros-pkgs \
     # Install other dependencies as well
@@ -49,7 +55,7 @@ RUN . /opt/ros/foxy/setup.sh && \
 # Add ROS and workscape sourcing in bashrc
 RUN echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc && \
     echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc && \
-    echo 'eval "$(starship init bash)"' >> ~/.bashrc \
+    echo 'eval "$(starship init bash)"' >> ~/.bashrc && \
     echo 'echo "[~/.bashrc] ROS Domain ID: ${ROS_DOMAIN_ID}"' >> ~/.bashrc
 
 # CMD allows overriding commands, unlike ENTRYPOINT 
