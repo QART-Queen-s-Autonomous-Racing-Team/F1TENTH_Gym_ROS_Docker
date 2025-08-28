@@ -1,4 +1,6 @@
 FROM osrf/ros:foxy-desktop
+# Set ROS_DOMAIN_ID for separation of concerns
+ENV ROS_DOMAIN_ID=10
 
 # Install additional tools as `root` user here
 RUN apt update && apt install -y \
@@ -47,7 +49,8 @@ RUN . /opt/ros/foxy/setup.sh && \
 # Add ROS and workscape sourcing in bashrc
 RUN echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc && \
     echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc && \
-    echo 'eval "$(starship init bash)"' >> ~/.bashrc
+    echo 'eval "$(starship init bash)"' >> ~/.bashrc \
+    echo 'echo "[~/.bashrc] ROS Domain ID: ${ROS_DOMAIN_ID}"' >> ~/.bashrc
 
 # CMD allows overriding commands, unlike ENTRYPOINT 
 CMD ["/bin/bash"]
