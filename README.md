@@ -29,6 +29,24 @@
         ```bash
         ~/ros2_workspaces/humble/scripts/dev.sh rebuild
         ```
+
+    4. start a new shell inside a container
+        
+        ```bash
+        ~/ros2_workspaces/humble/scripts/dev.sh new
+        ```
+
+    5. start a new root shell inside a container
+        
+        ```bash
+        ~/ros2_workspaces/humble/scripts/dev.sh root
+        ```
+
+    6. get container status
+        
+        ```bash
+        ~/ros2_workspaces/humble/scripts/dev.sh status
+        ```
         
 3. verify an environment (sanity check)
     
@@ -42,13 +60,8 @@
     
 4. `docker ps` shows all running Docker containers
 5. stop one container (for example Humble) before starting another (for example Jazzy)
-6. open an additional terminal into a Docker container:
     
-    ```bash
-    docker compose exec ros2-srv-humble /bin/bash
-    ```
-    
-7. inside a container, all the usual ROS commands apply (`colcon build`, `source install/setup.bash`, etc
+6. inside a container, all the usual ROS commands apply (`colcon build`, `source install/setup.bash`, etc
 
 ## Setting up a new Docker container
 1. Create a copy of an existing container folder, such as `~/ros2_workspaces/humble` and copy it with a new name, for ex for foxy it would be `~/ros2_workspaces/foxy`
