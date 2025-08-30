@@ -3,8 +3,8 @@ FROM osrf/ros:foxy-desktop
 ENV ROS_DOMAIN_ID=10
 
 # Install additional tools as `root` user here
-RUN apt update && apt install -y \
-    # Install ROS packages here
+RUN apt-get update && apt-get install -y \
+    # ROS packages
     ros-foxy-xacro \
     ros-foxy-joint-state-publisher-gui \
     ros-foxy-twist-mux \
@@ -13,6 +13,9 @@ RUN apt update && apt install -y \
     ros-foxy-controller-manager \
     ros-foxy-controller-manager-msgs \
     ros-foxy-tf2-tools \
+    ros-foxy-gazebo-ros2-control \
+    ros-foxy-image-transport-plugins \
+    ros-foxy-rqt-image-view \
     # Gazebo
     ros-foxy-gazebo-ros-pkgs \
     # Install other dependencies as well
@@ -24,7 +27,8 @@ RUN apt update && apt install -y \
     build-essential \
     sudo \
     bash-completion \
-    && rm -rf /var/lib/apt/lists/*
+    # Reduce package size
+    && rm -rf /var/lib/apt/lists/* 
 
 # Install Starship for prettiness
 RUN curl -fsSL https://starship.rs/install.sh | sh -s -- -y
