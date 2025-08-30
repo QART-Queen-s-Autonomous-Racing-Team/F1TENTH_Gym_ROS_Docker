@@ -70,3 +70,7 @@
 
 ## Installing dependencies 
 - Because of the `rm -rf /var/lib/apt/lists/*` command, `sudo apt install` won't work by default for installing packages - first run `sudo apt update` and `sudo apt upgrade` and then it will work 
+
+## VS Code Dev Containers
+- A powerful alternative to this setup is the VS Code Dev Containers extension: https://code.visualstudio.com/docs/devcontainers/containers
+- Great guide for it from **Articulated Robotics**: https://www.youtube.com/watch?v=dihfA7Ol6Mw
