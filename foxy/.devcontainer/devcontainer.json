@@ -1,0 +1,31 @@
+{
+  "name": "ROS Foxy Development",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "ros2-dc-srv-foxy",
+  "workspaceFolder": "/home/user1000/ros2_ws",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "ms-iotdev.vscode-ros"
+      ],
+      "settings": {
+        "workbench.colorTheme": "Default Dark+",
+        "workbench.colorCustomizations": {
+          "titleBar.activeBackground": "#ff6b35",
+          "titleBar.activeForeground": "#ffffff",
+          "statusBar.background": "#ff6b35"
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "args": ["--login"]
+          }
+        }
+      }
+    }
+  }
+}

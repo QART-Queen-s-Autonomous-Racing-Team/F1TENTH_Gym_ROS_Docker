@@ -1,0 +1,31 @@
+{
+  "name": "ROS Humble Development",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "ros2-dc-srv-humble",
+  "workspaceFolder": "/home/user1000/ros2_ws",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "ms-iotdev.vscode-ros"
+      ],
+      "settings": {
+        "workbench.colorTheme": "Monokai",
+        "workbench.colorCustomizations": {
+          "titleBar.activeBackground": "#2d5016",
+          "titleBar.activeForeground": "#ffffff",
+          "statusBar.background": "#2d5016"
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "args": ["--login"]
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@
 - This is a template for organizing ROS2 distributions into separate workspaces with Docker Engine
 - Based on this guide: https://blog.robotair.io/the-complete-beginners-guide-to-using-docker-for-ros-2-deployment-2025-edition-0f259ca8b378
 - It assumes a Ubuntu machine, and some basic knowledge of Docker and ROS2
+- The main usage is with normal `Dockerfile` + `docker-compose.yml`-> for the VS Code Dev Containers version use branch `dev-containers` and follow instructions below
 
 ## Quick Start
 1. Install Docker Engine with `apt` (not the VM Docker Desktop)**:** https://docs.docker.com/engine/install/ubuntu/#prerequisites
@@ -74,3 +75,8 @@
 ## VS Code Dev Containers
 - A powerful alternative to this setup is the VS Code Dev Containers extension: https://code.visualstudio.com/docs/devcontainers/containers
 - Great guide for it from **Articulated Robotics**: https://www.youtube.com/watch?v=dihfA7Ol6Mw
+- **Usage:**
+    1. Switch to branch `dev-containers`
+    2. Open the ROS release folder you want, for example `foxy`, in VS Code
+    3. Click on the bottom right Dev Containers button (or **Ctrl + Shift + P > Dev Containers: Reopen in container**)
+    4. VS Code will open a new window that contains an integrated IDE inside the Docker container, according to the instructions inside `.devcontainer`
