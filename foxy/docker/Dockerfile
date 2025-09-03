@@ -13,11 +13,20 @@ RUN apt update && apt install -y \
     ros-foxy-controller-manager \
     ros-foxy-controller-manager-msgs \
     ros-foxy-tf2-tools \
+    ros-foxy-gazebo-ros2-control \
+    ros-foxy-gazebo-ros2-control-demos \
+    ros-foxy-image-transport-plugins \
+    ros-foxy-rqt-image-view \
+    ros-foxy-slam-toolbox \
+    ros-foxy-navigation2 \
+    ros-foxy-nav2-bringup \
+    ros-foxy-turtlebot3* \
+    ros-foxy-twist-mux \
     # Gazebo
     ros-foxy-gazebo-ros-pkgs \
     # Install other dependencies as well
     python3-colcon-common-extensions \
-    python3-rosdep \
+    python3-rosdep \    
     nano \
     git \
     curl \
