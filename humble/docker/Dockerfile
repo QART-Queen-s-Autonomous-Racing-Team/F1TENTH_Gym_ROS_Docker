@@ -3,7 +3,7 @@ FROM osrf/ros:humble-desktop-full
 ENV ROS_DOMAIN_ID=20
 
 # Install additional tools as `root` user here
-RUN apt update && apt install -y \
+RUN apt-get update && apt-get install -y \
     python3-colcon-common-extensions \
     python3-rosdep \
     nano \
@@ -12,6 +12,7 @@ RUN apt update && apt install -y \
     build-essential \
     sudo \
     bash-completion \
+    # Reduce package size
     && rm -rf /var/lib/apt/lists/*
 
 # Install Starship for prettiness
