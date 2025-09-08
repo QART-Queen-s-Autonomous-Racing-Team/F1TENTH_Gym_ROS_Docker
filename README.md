@@ -4,6 +4,9 @@
 - It assumes a Ubuntu machine, and some basic knowledge of Docker and ROS2
 - The main usage is with normal `Dockerfile` + `docker-compose.yml`-> for the VS Code Dev Containers version use branch `dev-containers` and follow instructions below
 
+## f1tenth_gym_ros branch 
+- this branch - `impl/dev-containers-f1tenth-gym-ros` is an implementatino of the `dev-containers` branch, using the `docker` branch of the `f1tenth_gym_ros` project fork: https://github.com/TeoIlie/f1tenth_gym_ros/tree/docker
+
 ## Quick Start
 1. Install Docker Engine with `apt` (not the VM Docker Desktop)**:** https://docs.docker.com/engine/install/ubuntu/#prerequisites
 2. Clone the rep in `/home/[YOUR_USER]]` 
