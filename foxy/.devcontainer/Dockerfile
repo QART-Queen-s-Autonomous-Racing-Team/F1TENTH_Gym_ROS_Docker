@@ -22,19 +22,24 @@ RUN apt-get update && apt-get install -y \
     ros-foxy-nav2-bringup \
     ros-foxy-turtlebot3* \
     ros-foxy-twist-mux \
+    ros-foxy-rviz2 \
     # Gazebo
     ros-foxy-gazebo-ros-pkgs \
     # Install other dependencies as well
     python3-colcon-common-extensions \
     python3-rosdep \    
+    python3-pip \
+    libeigen3-dev \
+    tmux \
     nano \
     git \
     curl \
     build-essential \
     sudo \
-    bash-completion \
-    # Reduce package size
-    && rm -rf /var/lib/apt/lists/* 
+    bash-completion 
+
+RUN apt-get -y dist-upgrade
+RUN pip3 install transforms3d
 
 # Install Starship for prettiness
 RUN curl -fsSL https://starship.rs/install.sh | sh -s -- -y
@@ -48,6 +53,11 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
+
+# Install f1tenth gym dependencies
+RUN git clone https://github.com/f1tenth/f1tenth_gym
+RUN cd f1tenth_gym && \
+    pip3 install -e .
 
 # Set up workspace
 RUN mkdir -p /home/$USERNAME/ros2_ws/src && \
