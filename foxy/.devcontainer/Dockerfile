@@ -54,11 +54,6 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
-# Install f1tenth gym dependencies
-RUN git clone https://github.com/f1tenth/f1tenth_gym
-RUN cd f1tenth_gym && \
-    pip3 install -e .
-
 # Set up workspace
 RUN mkdir -p /home/$USERNAME/ros2_ws/src && \
     chown -R $USERNAME:$USERNAME /home/$USERNAME/
@@ -66,13 +61,14 @@ RUN mkdir -p /home/$USERNAME/ros2_ws/src && \
 # Set the default user to non-root for working with ROS
 USER $USERNAME
 
-# Set the default working directory
+# Set the default working directory, this is where f1tenth_gym_ros src code will be
 WORKDIR /home/$USERNAME/ros2_ws
 
-# Build the code - source ROS, install dependencies, build with colcon
-RUN . /opt/ros/foxy/setup.sh && \
-    rosdep update && rosdep install --from-paths src --ignore-src -r -y && \
-    colcon build --symlink-install
+# Install f1tenth gym dependencies inside /home/$USERNAME
+RUN cd /home/$USERNAME && \
+    git clone https://github.com/f1tenth/f1tenth_gym && \
+    cd f1tenth_gym && \
+    pip3 install -e .
 
 # Add ROS and workscape sourcing in bashrc
 RUN echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc && \
