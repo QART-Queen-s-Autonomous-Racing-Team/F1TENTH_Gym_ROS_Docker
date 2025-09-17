@@ -1,4 +1,4 @@
-# F1TENTH_Gym_ROS
+# F1TENTH_Gym_ROS_Docker
 - This is a VS Code Dev Containers implementation for using the `f1tenth_gym_ros` simulator
 - It requires a Ubuntu host machine
 
