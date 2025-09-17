@@ -66,7 +66,7 @@ WORKDIR /home/$USERNAME/ros2_ws
 
 # Install f1tenth gym dependencies inside /home/$USERNAME
 RUN cd /home/$USERNAME && \
-    git clone https://github.com/f1tenth/f1tenth_gym && \
+    git clone https://github.com/QART-Queen-s-Autonomous-Racing-Team/F1TENTH_Gym.git && \
     cd f1tenth_gym && \
     pip3 install -e .
 

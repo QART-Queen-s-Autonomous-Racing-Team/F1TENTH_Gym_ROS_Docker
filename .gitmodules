@@ -1,4 +1,4 @@
 [submodule "foxy/src/f1tenth_gym_ros"]
 	path = foxy/src/f1tenth_gym_ros
-	url = https://github.com/TeoIlie/F1TENTH_Gym_ROS.git
+	url = https://github.com/QART-Queen-s-Autonomous-Racing-Team/F1TENTH_Gym_ROS.git
 	branch = docker
